@@ -400,5 +400,83 @@ console.log(person.fullname);
 console.log(person.age);
 
 
+/* 
+destructuring = extract value from arrays and objects,
+                then assign them to variables in a convenient way
+                [] = to perform array destructuring
+                {} = to perform object destructuring
+*/
+
+
+//---------- EXAMPLE 1 ----------
+// SWAP THE VALUE OF TWO VARIABLES
+
+let a = 4;
+let b = 6;
+[a,b] = [b,a];
+
+console.log(a); // output:- 6
+console.log(b); // output:- 4
+
+//---------- EXAMPLE 2 ----------
+// SWAP 2 ELEMENTS IN AN ARRAY
+
+const colors = ["red", "green", "blue", "black", "white"];
+
+[colors[0], colors[4]] = [colors[4], colors[0]];
+console.log(colors); //(5)['white', 'green', 'blue', 'black', 'red'];
+
+//---------- EXAMPLE 3 ----------
+// ASSIGN ARRAY ELEMENTS TO VARIABLES
+
+const bat = ["puma", "reebok", "new balance", "sg"];
+const [firstbat, secondbat, thirdbat, ...extrabat] = bat;  // ...extrabat is rest operator, creates an array of remaining bats
+
+console.log(firstbat);
+console.log(secondbat);
+console.log(thirdbat);
+console.log(extrabat);  //output:- 1, ['sg']
+
+//---------- EXAMPLE 4 ----------
+// EXTRACT VALUES FROM OBJECTS
+
+const guy1 = {
+    firstname: "Spongebob",
+    lastname: "SquarePants",
+    age: 49,
+    job: "Fry Cook",
+}
+const guy2 = {
+    firstname: "Patrick",
+    lastname: "Star",
+    age: 34,  
+}
+
+// const {firstname, lastname, age, job} = guy1;
+// console.log(firstname);
+// console.log(lastname);
+// console.log(age);
+// console.log(job);
+
+const {firstname, lastname, age, job = "Unemployed"} = guy2;
+console.log(firstname);
+console.log(lastname);
+console.log(age);
+console.log(job);
+
+//---------- EXAMPLE 5 ---------
+// DESTRUCTURE IN FUNCTION PARAMETERS
+
+function displayguy(firstname, lastname, age, job){
+    console.log(`name: ${firstname} ${lastname}`);
+    console.log(`name: ${age}`);
+    console.log(`name: ${job}`);
+
+}
+displayguy(guy1);
+
+
+
+
 
 
