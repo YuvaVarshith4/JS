@@ -476,6 +476,117 @@ function displayguy(firstname, lastname, age, job){
 displayguy(guy1);
 
 
+/* 
+nested objects = Objects inside of other Objects.
+                 Allows you to represent complex data structures
+                 Child Object is enclosed by a Parent Object
+
+                Person{Address{}, ContactInfo{}}
+                ShoppingCart{Keyboard{}, Mouse{}, Monitor{}}
+*/
+
+// EXAMPLE 1
+const cartoonchar = {
+    fullname: "Spongebob SquarePants",
+    age: 29,
+    isStudent: true,
+    hobbies: ["karate", "jellyfishing", "cooking"],
+    address: {
+        street: "124 conch St.",
+        city: "Bikini Bottom",
+        country: "Int. Water"
+    }
+}
+
+console.log(cartoonchar.fullname);
+console.log(cartoonchar.age);
+console.log(cartoonchar.isStudent);
+console.log(cartoonchar.hobbies[1]);
+console.log(cartoonchar.address);
+console.log(cartoonchar.address.street);
+console.log(cartoonchar.address.city);
+console.log(cartoonchar.address.country);
+
+for(const property in cartoonchar.address){
+    console.log(person.address[property]);
+}
+
+//EXAMPLE 2
+class guy3{
+    constructor(name, age , ...address){
+        this.name = name;
+        this.age = age;
+        this.address = new Address(...address);
+    }
+}
+class Address{
+    constructor(street, city, country){
+        this.street = street;
+        this.city = city;
+        this.country = country;
+    }
+}
+
+const guy4 = new guy3("Spongebob", 30, "124 Conch St.",
+                                       "Bikini Bottom",
+                                       "Int. Water");
+
+const guy5 = new guy3("Squiward", 45, "126 Conch St.",
+                                       "Bikini Bottom",
+                                       "Int. Water"); 
+                                       
+console.log(guy4.address.street);
+
+
+
+/* 
+Array of objects
+*/
+
+const fruits = [{name: "apple", color: "red", calories: 95},
+                {name: "orange", color: "orange", calories: 45},
+                {name: "coconut", color: "white", calories: 159},
+                {name: "pineapple", color: "yellow", calories: 37}]
+
+console.log(fruits[2].calories);
+
+fruits.push({name: "grape", color: "purple", calories: 62});
+console.log(fruits);
+
+// fruits.pop(); // pineapple removed
+// fruits.splice(1, 2); // orange, coconut will be removed
+
+//------------ forEach() -------------
+
+fruits.forEach(fruit => console.log(fruit));
+fruits.forEach(fruit => console.log(fruit.color));
+
+//------------ map() -----------------
+
+const fruitnames = fruits.map(fruit => fruit.name);
+const fruitcolors = fruits.map(fruit => fruit.color);
+console.log(fruitnames);
+console.log(fruitcolors);
+
+//------------ filter() --------------
+
+const yellowfruit = fruits.filter(fruit => fruit.color === "yellow");
+const lowCalfruit = fruits.filter(fruit => fruit.calories < 100);
+console.log(yellowfruit);
+console.log(lowCalfruit);
+
+//------------ reduce() --------------
+
+const maxCalfruit = fruits.reduce( (max, fruit) => 
+                                   fruit.calories > max.calories ? fruit : max);
+console.log(maxCalfruit);
+console.log(maxCalfruit.calories);
+
+
+
+
+
+
 
 
 
